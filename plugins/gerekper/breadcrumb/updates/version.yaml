@@ -1,0 +1,7 @@
+1.0.1: Initialize devnull.Breadcrumb
+1.0.2:
+  - First version of devnull.breadcrumb
+  - create_all_table.php
+  - seed_all_table.php
+1.0.2.1: Added Breadcrumbs functions
+1.0.3.0: Moved to Individual cells

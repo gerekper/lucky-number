@@ -7,12 +7,13 @@ security = "all"
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8" />
+    <title>October CMS - {{ this.page.title }}</title>
+    <meta name="description" content="{{ this.page.meta_description }}">
+    <meta name="title" content="{{ this.page.meta_title }}">
+    <meta name="author" content="devnull69">
+    <link rel="icon" type="image/png" href="{{ 'assets/icons/ico/subscript.png'|theme }}" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <title>Limitless - Responsive Web Application Kit by Eugene Kopyov</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no"/>
 
     <!-- Global stylesheets -->
     <link href="{{ [
@@ -21,32 +22,34 @@ security = "all"
           'assets/css/ltr/all.min.css'
           ]|theme }}" rel="stylesheet" type="text/css">
     <!-- /global stylesheets -->
-
-  </head>
-
-    <!-- Core JS files -->
-    <script src="../../../assets/demo/demo_configurator.js"></script>
-    <script src="../../../assets/js/bootstrap/bootstrap.bundle.min.js"></script>
+    <!-- Core demo JS files -->
+    <script src="{{[
+        'assets/demo/demo_configurator.js',
+        'assets/js/bootstrap/bootstrap.bundle.min.js'
+    ]|theme}}"></script>
     <!-- /core JS files -->
-
     <!-- Theme JS files -->
     <script src="{{[
         'assets/js/vendor/visualization/d3/d3.min.js',
         'assets/js/vendor/visualization/d3/d3_tooltip.min.js',
         'assets/js/app.min.js'
-        ]|theme}}>"</script>
-
-    <script src="../../../assets/demo/pages/dashboard.js"></script>
-    <script src="../../../assets/demo/charts/pages/dashboard/streamgraph.js"></script>
-    <script src="../../../assets/demo/charts/pages/dashboard/sparklines.js"></script>
-    <script src="../../../assets/demo/charts/pages/dashboard/lines.js"></script>
-    <script src="../../../assets/demo/charts/pages/dashboard/areas.js"></script>
-    <script src="../../../assets/demo/charts/pages/dashboard/donuts.js"></script>
-    <script src="../../../assets/demo/charts/pages/dashboard/bars.js"></script>
-    <script src="../../../assets/demo/charts/pages/dashboard/progress.js"></script>
-    <script src="../../../assets/demo/charts/pages/dashboard/heatmaps.js"></script>
-    <script src="../../../assets/demo/charts/pages/dashboard/pies.js"></script>
-    <script src="../../../assets/demo/charts/pages/dashboard/bullets.js"></script>
+        ]|theme}}"></script>
     <!-- /theme JS files -->
+    <!-- Theme JS2 files -->
+    <script src="{{[
+        'assets/demo/pages/dashboard.js',
+        'assets/demo/charts/pages/dashboard/streamgraph.js',
+        'assets/demo/charts/pages/dashboard/sparklines.js',
+        'assets/demo/charts/pages/dashboard/lines.js',
+        'assets/demo/charts/pages/dashboard/areas.js',
+        'assets/demo/charts/pages/dashboard/donuts.js',
+        'assets/demo/charts/pages/dashboard/bars.js',
+        'assets/demo/charts/pages/dashboard/progress.js',
+        'assets/demo/charts/pages/dashboard/heatmaps.js',
+        'assets/demo/charts/pages/dashboard/pies.js',
+        'assets/demo/charts/pages/dashboard/bullets.js'
+    ]|theme}}"> </script>
+    <!-- /theme JS2 files -->
+ </head>
 
 </html>

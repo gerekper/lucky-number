@@ -4,7 +4,14 @@ description = "Default layout"
 security = "all"
 ==
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html
+    lang="en"
+    dir="ltr"
+    class="light-style layout-navbar-fixed layout-menu-fixed"
+    data-theme="theme-default"
+    data-assets-path="../../assets/"
+    data-template="vertical-menu-template"
+>
   <head>
     <meta charset="utf-8" />
     <title>October CMS - {{ this.page.title }}</title>
@@ -13,15 +20,31 @@ security = "all"
     <meta name="author" content="devnull69">
     <link rel="icon" type="image/png" href="{{ 'assets/icons/ico/subscript.png'|theme }}" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{{ 'assets/img/favicon/favicon.ico'|theme }}" />
+    <!-- /Favicon -->
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Icons -->
+    <link rel="stylesheet" href="{{[
+        'assets/vendor/fonts/fontawesome.css',
+        'assets/vendor/fonts/tabler-icons.css',
+        'assets/vendor/fonts/flag-icons.css'
+        ]|theme}}" />
+    <!-- Core CSS -->
+    <link rel="stylesheet" class="template-customizer-core-css" href="{{[
+        'assets/vendor/css/rtl/core.css',
+        'assets/vendor/css/rtl/theme-default.css'
+    ]|theme}}" />
+    <link rel="stylesheet" href="{{['assets/css/demo.css']|theme}}" />
 
-    <!-- Global stylesheets -->
-    <link href="{{ [
-          'assets/fonts/inter/inter.css',
-          'assets/icons/phosphor/styles.min.css',
-          'assets/css/ltr/all.min.css'
-          ]|theme }}" rel="stylesheet" type="text/css">
-    <!-- /global stylesheets -->
+  </head>
     <!-- Core demo JS files -->
     <script src="{{[
         'assets/demo/demo_configurator.js',
@@ -50,6 +73,4 @@ security = "all"
         'assets/demo/charts/pages/dashboard/bullets.js'
     ]|theme}}"> </script>
     <!-- /theme JS2 files -->
- </head>
-
 </html>

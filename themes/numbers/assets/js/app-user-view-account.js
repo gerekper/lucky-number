@@ -68,7 +68,7 @@ $(function () {
               '</div>' +
               '</div>' +
               '<div class="d-flex flex-column">' +
-              '<span class="text-truncate fw-semibold">' +
+              '<span class="text-truncate fw-medium text-heading">' +
               $name +
               '</span>' +
               '<small class="text-muted">' +
@@ -89,27 +89,34 @@ $(function () {
           responsivePriority: 3,
           render: function (data, type, full, meta) {
             var $progress = full['progress'] + '%',
-              $color;
+              $color,
+              $labelColor;
             switch (true) {
               case full['progress'] < 25:
                 $color = 'bg-danger';
+                $labelColor = 'bg-label-danger';
                 break;
               case full['progress'] < 50:
                 $color = 'bg-warning';
+                $labelColor = 'bg-label-warning';
                 break;
               case full['progress'] < 75:
                 $color = 'bg-info';
+                $labelColor = 'bg-label-info';
                 break;
               case full['progress'] <= 100:
                 $color = 'bg-success';
+                $labelColor = 'bg-label-success';
                 break;
             }
             return (
               '<div class="d-flex flex-column"><small class="mb-1">' +
               $progress +
               '</small>' +
-              '<div class="progress w-100 me-3" style="height: 6px;">' +
-              '<div class="progress-bar ' +
+              '<div class="progress rounded ' +
+              $labelColor +
+              ' w-100 me-3" style="height: 6px;">' +
+              '<div class="progress-bar rounded ' +
               $color +
               '" style="width: ' +
               $progress +
@@ -209,7 +216,7 @@ $(function () {
           render: function (data, type, full, meta) {
             var $invoice_id = full['invoice_id'];
             // Creates full output for row
-            var $row_output = '<a href="app-invoice-preview.html"><span>#' + $invoice_id + '</span></a>';
+            var $row_output = '<a href="app-invoice-preview.html">#' + $invoice_id + '</a>';
             return $row_output;
           }
         },
@@ -221,19 +228,19 @@ $(function () {
               $due_date = full['due_date'],
               $balance = full['balance'];
             var roleBadgeObj = {
-              Sent: '<span class="badge badge-center rounded-pill bg-label-secondary w-px-30 h-px-30"><i class="ti ti-circle-check ti-sm"></i></span>',
+              Sent: '<span class="avatar avatar-sm"> <span class="avatar-initial rounded-circle bg-label-secondary"><i class="mdi mdi-email-outline"></i></span></span>',
               Draft:
-                '<span class="badge badge-center rounded-pill bg-label-primary w-px-30 h-px-30"><i class="ti ti-device-floppy ti-sm"></i></span>',
+                '<span class="avatar avatar-sm"> <span class="avatar-initial rounded-circle bg-label-primary"><i class="mdi mdi-folder-outline"></i></span></span>',
               'Past Due':
-                '<span class="badge badge-center rounded-pill bg-label-danger w-px-30 h-px-30"><i class="ti ti-info-circle ti-sm"></i></span>',
+                '<span class="avatar avatar-sm"> <span class="avatar-initial rounded-circle bg-label-danger"><i class="mdi mdi-alert-circle-outline"></i></span></span>',
               'Partial Payment':
-                '<span class="badge badge-center rounded-pill bg-label-success w-px-30 h-px-30"><i class="ti ti-circle-half-2 ti-sm"></i></span>',
-              Paid: '<span class="badge badge-center rounded-pill bg-label-warning w-px-30 h-px-30"><i class="ti ti-chart-pie ti-sm"></i></span>',
+                '<span class="avatar avatar-sm"> <span class="avatar-initial rounded-circle bg-label-success"><i class="mdi mdi-check"></i></span></span>',
+              Paid: '<span class="avatar avatar-sm"> <span class="avatar-initial rounded-circle bg-label-warning"><i class="mdi mdi-chart-pie-outline"></i></span></span>',
               Downloaded:
-                '<span class="badge badge-center rounded-pill bg-label-info w-px-30 h-px-30"><i class="ti ti-arrow-down-circle ti-sm"></i></span>'
+                '<span class="avatar avatar-sm"> <span class="avatar-initial rounded-circle bg-label-info"><i class="mdi mdi-arrow-down"></i></span></span>'
             };
             return (
-              "<span data-bs-toggle='tooltip' data-bs-html='true' title='<span>" +
+              "<div class='d-inline-flex' data-bs-toggle='tooltip' data-bs-html='true' title='<span>" +
               $invoice_status +
               '<br> <strong>Balance:</strong> ' +
               $balance +
@@ -241,7 +248,7 @@ $(function () {
               $due_date +
               "</span>'>" +
               roleBadgeObj[$invoice_status] +
-              '</span>'
+              '</div>'
             );
           }
         },
@@ -261,9 +268,14 @@ $(function () {
           render: function (data, type, full, meta) {
             return (
               '<div class="d-flex align-items-center">' +
-              '<a href="javascript:;" class="text-body" data-bs-toggle="tooltip" title="Send Mail"><i class="ti ti-mail me-2 ti-sm"></i></a>' +
-              '<a href="app-invoice-preview.html" class="text-body" data-bs-toggle="tooltip" title="Preview"><i class="ti ti-eye mx-2 ti-sm"></i></a>' +
-              '<a href="javascript:;" class="text-body" data-bs-toggle="tooltip" title="Download"><i class="ti ti-dots-vertical mx-1 ti-sm"></i></a>' +
+              '<a href="javascript:;" class="btn btn-sm btn-icon btn-text-secondary rounded-pill text-body" data-bs-toggle="tooltip" title="Delete Invoice"><i class="mdi mdi-delete-outline mdi-20px mx-1"></i></a>' +
+              '<a href="app-invoice-preview.html" class="btn btn-sm btn-icon btn-text-secondary rounded-pill text-body" data-bs-toggle="tooltip" title="Preview"><i class="mdi mdi-eye-outline mdi-20px mx-1"></i></a>' +
+              '<button class="btn btn-sm btn-icon btn-text-secondary rounded-pill dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="mdi mdi-dots-vertical mdi-20px"></i></button>' +
+              '<div class="dropdown-menu dropdown-menu-end m-0">' +
+              '<a href="javascript:;" class="dropdown-item"><i class="mdi mdi-download-outline me-2"></i><span>Download</span></a>' +
+              '<a href="javascript:;" class="dropdown-item"><i class="mdi mdi-pencil-outline me-2"></i><span>Edit</span></a>' +
+              '<a href="javascript:;" class="dropdown-item delete-record"><i class="mdi mdi-checkbox-multiple-blank-outline me-2"></i><span>Duplicate</span></a>' +
+              '</div>' +
               '</div>'
             );
           }
@@ -288,36 +300,36 @@ $(function () {
       buttons: [
         {
           extend: 'collection',
-          className: 'btn btn-label-secondary dropdown-toggle float-sm-end mb-3 mb-sm-0',
-          text: '<i class="ti ti-screen-share ti-xs me-2"></i>Export',
+          className: 'btn btn-label-primary dropdown-toggle float-sm-end mb-3 mb-sm-0',
+          text: '<i class="mdi mdi-export-variant me-1"></i>Export',
           buttons: [
             {
               extend: 'print',
-              text: '<i class="ti ti-printer me-2" ></i>Print',
+              text: '<i class="mdi mdi-printer-outline me-1" ></i>Print',
               className: 'dropdown-item',
               exportOptions: { columns: [1, 2, 3, 4] }
             },
             {
               extend: 'csv',
-              text: '<i class="ti ti-file-text me-2" ></i>Csv',
+              text: '<i class="mdi mdi-file-document-outline me-1" ></i>Csv',
               className: 'dropdown-item',
               exportOptions: { columns: [1, 2, 3, 4] }
             },
             {
               extend: 'excel',
-              text: '<i class="ti ti-file-spreadsheet me-2"></i>Excel',
+              text: '<i class="mdi mdi-file-excel-outline me-1"></i>Excel',
               className: 'dropdown-item',
               exportOptions: { columns: [1, 2, 3, 4] }
             },
             {
               extend: 'pdf',
-              text: '<i class="ti ti-file-description me-2"></i>Pdf',
+              text: '<i class="mdi mdi-file-pdf-box me-1"></i>Pdf',
               className: 'dropdown-item',
               exportOptions: { columns: [1, 2, 3, 4] }
             },
             {
               extend: 'copy',
-              text: '<i class="ti ti-copy me-2" ></i>Copy',
+              text: '<i class="mdi mdi-content-copy me-1" ></i>Copy',
               className: 'dropdown-item',
               exportOptions: { columns: [1, 2, 3, 4] }
             }
@@ -368,11 +380,4 @@ $(function () {
       });
     });
   });
-
-  // Filter form control to default size
-  // ? setTimeout used for multilingual table initialization
-  setTimeout(() => {
-    $('.dataTables_filter .form-control').removeClass('form-control-sm');
-    $('.dataTables_length .form-select').removeClass('form-select-sm');
-  }, 300);
 });

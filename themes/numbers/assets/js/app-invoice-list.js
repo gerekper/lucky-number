@@ -16,6 +16,7 @@ $(function () {
         // columns according to JSON
         { data: '' },
         { data: 'invoice_id' },
+        { data: 'invoice_id' },
         { data: 'invoice_status' },
         { data: 'issued_date' },
         { data: 'client_name' },
@@ -35,37 +36,49 @@ $(function () {
             return '';
           }
         },
+
+        {
+          // For Checkboxes
+          targets: 1,
+          orderable: false,
+          render: function () {
+            return '<input type="checkbox" class="dt-checkboxes form-check-input">';
+          },
+          checkboxes: {
+            selectAllRender: '<input type="checkbox" class="form-check-input">'
+          }
+        },
         {
           // Invoice ID
-          targets: 1,
+          targets: 2,
           render: function (data, type, full, meta) {
             var $invoice_id = full['invoice_id'];
             // Creates full output for row
-            var $row_output = '<a href="app-invoice-preview.html">#' + $invoice_id + '</a>';
+            var $row_output = '<a href="app-invoice-preview.html"><span>#' + $invoice_id + '</span></a>';
             return $row_output;
           }
         },
         {
           // Invoice status
-          targets: 2,
+          targets: 3,
           render: function (data, type, full, meta) {
             var $invoice_status = full['invoice_status'],
               $due_date = full['due_date'],
               $balance = full['balance'];
             var roleBadgeObj = {
-              Sent: '<span class="badge badge-center rounded-pill bg-label-secondary w-px-30 h-px-30"><i class="ti ti-circle-check ti-sm"></i></span>',
+              Sent: '<span class="avatar avatar-sm"> <span class="avatar-initial rounded-circle bg-label-secondary"><i class="mdi mdi-email-outline"></i></span></span>',
               Draft:
-                '<span class="badge badge-center rounded-pill bg-label-primary w-px-30 h-px-30"><i class="ti ti-device-floppy ti-sm"></i></span>',
+                '<span class="avatar avatar-sm"> <span class="avatar-initial rounded-circle bg-label-primary"><i class="mdi mdi-folder-outline"></i></span></span>',
               'Past Due':
-                '<span class="badge badge-center rounded-pill bg-label-danger w-px-30 h-px-30"><i class="ti ti-info-circle ti-sm"></i></span>',
+                '<span class="avatar avatar-sm"> <span class="avatar-initial rounded-circle bg-label-danger"><i class="mdi mdi-alert-circle-outline"></i></span></span>',
               'Partial Payment':
-                '<span class="badge badge-center rounded-pill bg-label-success w-px-30 h-px-30"><i class="ti ti-circle-half-2 ti-sm"></i></span>',
-              Paid: '<span class="badge badge-center rounded-pill bg-label-warning w-px-30 h-px-30"><i class="ti ti-chart-pie ti-sm"></i></span>',
+                '<span class="avatar avatar-sm"> <span class="avatar-initial rounded-circle bg-label-success"><i class="mdi mdi-check"></i></span></span>',
+              Paid: '<span class="avatar avatar-sm"> <span class="avatar-initial rounded-circle bg-label-warning"><i class="mdi mdi-chart-pie-outline"></i></span></span>',
               Downloaded:
-                '<span class="badge badge-center rounded-pill bg-label-info w-px-30 h-px-30"><i class="ti ti-arrow-down-circle ti-sm"></i></span>'
+                '<span class="avatar avatar-sm"> <span class="avatar-initial rounded-circle bg-label-info"><i class="mdi mdi-arrow-down"></i></span></span>'
             };
             return (
-              "<span data-bs-toggle='tooltip' data-bs-html='true' title='<span>" +
+              "<div class='d-inline-flex' data-bs-toggle='tooltip' data-bs-html='true' title='<span>" +
               $invoice_status +
               '<br> <strong>Balance:</strong> ' +
               $balance +
@@ -73,13 +86,13 @@ $(function () {
               $due_date +
               "</span>'>" +
               roleBadgeObj[$invoice_status] +
-              '</span>'
+              '</div>'
             );
           }
         },
         {
           // Client name and Service
-          targets: 3,
+          targets: 4,
           responsivePriority: 4,
           render: function (data, type, full, meta) {
             var $name = full['client_name'],
@@ -94,7 +107,7 @@ $(function () {
             } else {
               // For Avatar badge
               var stateNum = Math.floor(Math.random() * 6),
-                states = ['success', 'danger', 'warning', 'info', 'primary', 'secondary'],
+                states = ['success', 'danger', 'warning', 'info', 'dark', 'primary', 'secondary'],
                 $state = states[stateNum],
                 $name = full['client_name'],
                 $initials = $name.match(/\b\w/g) || [];
@@ -109,10 +122,10 @@ $(function () {
               $output +
               '</div>' +
               '</div>' +
-              '<div class="d-flex flex-column">' +
-              '<a href="pages-profile-user.html" class="text-body text-truncate"><span class="fw-semibold">' +
+              '<div class="d-flex flex-column gap-1">' +
+              '<a href="pages-profile-user.html" class="text-truncate"><h6 class="mb-0">' +
               $name +
-              '</span></a>' +
+              '</h6></a>' +
               '<small class="text-truncate text-muted">' +
               $service +
               '</small>' +
@@ -123,7 +136,7 @@ $(function () {
         },
         {
           // Total Invoice Amount
-          targets: 4,
+          targets: 5,
           render: function (data, type, full, meta) {
             var $total = full['total'];
             return '<span class="d-none">' + $total + '</span>$' + $total;
@@ -131,7 +144,7 @@ $(function () {
         },
         {
           // Due Date
-          targets: 5,
+          targets: 6,
           render: function (data, type, full, meta) {
             var $due_date = new Date(full['due_date']);
             // Creates full output for row
@@ -146,20 +159,20 @@ $(function () {
         },
         {
           // Client Balance/Status
-          targets: 6,
+          targets: 7,
           orderable: false,
           render: function (data, type, full, meta) {
             var $balance = full['balance'];
             if ($balance === 0) {
               var $badge_class = 'bg-label-success';
-              return '<span class="badge ' + $badge_class + '" text-capitalized> Paid </span>';
+              return '<span class="badge rounded-pill ' + $badge_class + '" text-capitalized> Paid </span>';
             } else {
               return '<span class="d-none">' + $balance + '</span>' + $balance;
             }
           }
         },
         {
-          targets: 7,
+          targets: 8,
           visible: false
         },
         {
@@ -171,16 +184,14 @@ $(function () {
           render: function (data, type, full, meta) {
             return (
               '<div class="d-flex align-items-center">' +
-              '<a href="javascript:;" data-bs-toggle="tooltip" class="text-body" data-bs-placement="top" title="Send Mail"><i class="ti ti-mail mx-2 ti-sm"></i></a>' +
-              '<a href="app-invoice-preview.html" data-bs-toggle="tooltip" class="text-body" data-bs-placement="top" title="Preview Invoice"><i class="ti ti-eye mx-2 ti-sm"></i></a>' +
+              '<a href="javascript:;" data-bs-toggle="tooltip" class="text-body delete-record" data-bs-placement="top" title="Delete Invoice"><i class="mdi mdi-delete-outline mdi-20px mx-1"></i></a>' +
+              '<a href="app-invoice-preview.html" data-bs-toggle="tooltip" class="text-body" data-bs-placement="top" title="Preview Invoice"><i class="mdi mdi-eye-outline mdi-20px mx-1"></i></a>' +
               '<div class="dropdown">' +
-              '<a href="javascript:;" class="btn dropdown-toggle hide-arrow text-body p-0" data-bs-toggle="dropdown"><i class="ti ti-dots-vertical ti-sm"></i></a>' +
+              '<a href="javascript:;" class="btn dropdown-toggle hide-arrow text-body p-0" data-bs-toggle="dropdown"><i class="mdi mdi-dots-vertical mdi-20px"></i></a>' +
               '<div class="dropdown-menu dropdown-menu-end">' +
               '<a href="javascript:;" class="dropdown-item">Download</a>' +
               '<a href="app-invoice-edit.html" class="dropdown-item">Edit</a>' +
               '<a href="javascript:;" class="dropdown-item">Duplicate</a>' +
-              '<div class="dropdown-divider"></div>' +
-              '<a href="javascript:;" class="dropdown-item delete-record text-danger">Delete</a>' +
               '</div>' +
               '</div>' +
               '</div>'
@@ -188,11 +199,11 @@ $(function () {
           }
         }
       ],
-      order: [[1, 'desc']],
+      order: [[2, 'desc']],
       dom:
         '<"row ms-2 me-3"' +
-        '<"col-12 col-md-6 d-flex align-items-center justify-content-center justify-content-md-start gap-2"l<"dt-action-buttons text-xl-end text-lg-start text-md-end text-start mt-md-0 mt-3"B>>' +
-        '<"col-12 col-md-6 d-flex align-items-center justify-content-end flex-column flex-md-row pe-3 gap-md-2"f<"invoice_status mb-3 mb-md-0">>' +
+        '<"col-12 col-md-6 d-flex align-items-center justify-content-center justify-content-md-start gap-3"l<"dt-action-buttons text-xl-end text-lg-start text-md-end text-start mt-md-0 mt-3"B>>' +
+        '<"col-12 col-md-6 d-flex align-items-center justify-content-end flex-column flex-md-row pe-3 gap-md-3"f<"invoice_status mb-3 mb-md-0">>' +
         '>t' +
         '<"row mx-2"' +
         '<"col-sm-12 col-md-6"i>' +
@@ -206,7 +217,7 @@ $(function () {
       // Buttons with Dropdown
       buttons: [
         {
-          text: '<i class="ti ti-plus me-md-1"></i><span class="d-md-inline-block d-none">Create Invoice</span>',
+          text: '<i class="mdi mdi-plus me-md-1"></i><span class="d-md-inline-block d-none">Create Invoice</span>',
           className: 'btn btn-primary',
           action: function (e, dt, button, config) {
             window.location = 'app-invoice-add.html';
@@ -249,7 +260,7 @@ $(function () {
       initComplete: function () {
         // Adding role filter once table initialized
         this.api()
-          .columns(7)
+          .columns(8)
           .every(function () {
             var column = this;
             var select = $(
@@ -285,13 +296,9 @@ $(function () {
 
   // Delete Record
   $('.invoice-list-table tbody').on('click', '.delete-record', function () {
+    // To hide tooltip on clicking delete icon
+    $(this).closest($('[data-bs-toggle="tooltip"]').tooltip('hide'));
+    // To delete the whole row
     dt_invoice.row($(this).parents('tr')).remove().draw();
   });
-
-  // Filter form control to default size
-  // ? setTimeout used for multilingual table initialization
-  setTimeout(() => {
-    $('.dataTables_filter .form-control').removeClass('form-control-sm');
-    $('.dataTables_length .form-select').removeClass('form-select-sm');
-  }, 300);
 });

@@ -63,10 +63,10 @@ table.dataTable.table-striped tr.dtrg-level-5 th {
 
 .light-style tr.group,
 .light-style tr.group:hover {
-  background-color: rgba(75, 70, 92, 0.05) !important;
+  background-color: rgba(76, 78, 100, 0.06) !important;
 }
 
 .dark-style tr.group,
 .dark-style tr.group:hover {
-  background-color: rgba(134, 146, 208, 0.1) !important;
+  background-color: rgba(234, 234, 255, 0.12) !important;
 }

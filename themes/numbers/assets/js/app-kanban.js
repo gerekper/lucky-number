@@ -76,11 +76,11 @@
   function renderBoardDropdown() {
     return (
       "<div class='dropdown'>" +
-      "<i class='dropdown-toggle ti ti-dots-vertical cursor-pointer' id='board-dropdown' data-bs-toggle='dropdown' aria-haspopup='true' aria-expanded='false'></i>" +
+      "<i class='dropdown-toggle mdi mdi-dots-vertical mdi-24px text-muted cursor-pointer' id='board-dropdown' data-bs-toggle='dropdown' aria-haspopup='true' aria-expanded='false'></i>" +
       "<div class='dropdown-menu dropdown-menu-end' aria-labelledby='board-dropdown'>" +
-      "<a class='dropdown-item delete-board' href='javascript:void(0)'> <i class='ti ti-trash ti-xs' me-1></i> <span class='align-middle'>Delete</span></a>" +
-      "<a class='dropdown-item' href='javascript:void(0)'><i class='ti ti-edit ti-xs' me-1></i> <span class='align-middle'>Rename</span></a>" +
-      "<a class='dropdown-item' href='javascript:void(0)'><i class='ti ti-archive ti-xs' me-1></i> <span class='align-middle'>Archive</span></a>" +
+      "<a class='dropdown-item delete-board' href='javascript:void(0)'> <i class='mdi mdi-delete-outline'></i> <span class='align-middle'>Delete</span></a>" +
+      "<a class='dropdown-item' href='javascript:void(0)'><i class='mdi mdi-rename-outline'></i> <span class='align-middle'>Rename</span></a>" +
+      "<a class='dropdown-item' href='javascript:void(0)'><i class='mdi mdi-archive-outline'></i> <span class='align-middle'>Archive</span></a>" +
       '</div>' +
       '</div>'
     );
@@ -89,7 +89,7 @@
   function renderDropdown() {
     return (
       "<div class='dropdown kanban-tasks-item-dropdown'>" +
-      "<i class='dropdown-toggle ti ti-dots-vertical' id='kanban-tasks-item-dropdown' data-bs-toggle='dropdown' aria-haspopup='true' aria-expanded='false'></i>" +
+      "<i class='dropdown-toggle mdi mdi-dots-vertical' id='kanban-tasks-item-dropdown' data-bs-toggle='dropdown' aria-haspopup='true' aria-expanded='false'></i>" +
       "<div class='dropdown-menu dropdown-menu-end' aria-labelledby='kanban-tasks-item-dropdown'>" +
       "<a class='dropdown-item' href='javascript:void(0)'>Copy task link</a>" +
       "<a class='dropdown-item' href='javascript:void(0)'>Duplicate task</a>" +
@@ -102,7 +102,7 @@
   function renderHeader(color, text) {
     return (
       "<div class='d-flex justify-content-between flex-wrap align-items-center mb-2 pb-1'>" +
-      "<div class='item-badges'> " +
+      "<div class='item-badges d-flex'> " +
       "<div class='badge rounded-pill bg-label-" +
       color +
       "'> " +
@@ -154,14 +154,14 @@
   function renderFooter(attachments, comments, assigned, members) {
     return (
       "<div class='d-flex justify-content-between align-items-center flex-wrap mt-2 pt-1'>" +
-      "<div class='d-flex'> <span class='d-flex align-items-center me-2'><i class='ti ti-paperclip ti-xs me-1'></i>" +
-      "<span class='attachments'>" +
+      "<div> <span class='align-middle me-2'><i class='mdi mdi-paperclip mdi-20px me-1'></i>" +
+      "<small class='attachments'>" +
       attachments +
-      '</span>' +
-      "</span> <span class='d-flex align-items-center ms-1'><i class='ti ti-message-dots ti-xs me-1'></i>" +
-      '<span> ' +
+      '</small>' +
+      "</span> <span class='align-middle'><i class='mdi mdi-message-outline mdi-20px me-1'></i>" +
+      '<small> ' +
       comments +
-      ' </span>' +
+      ' </small>' +
       '</span></div>' +
       "<div class='avatar-group d-flex align-items-center assigned-avatar'>" +
       renderAvatar(assigned, true, 'xs', null, members) +
@@ -182,7 +182,7 @@
     itemAddOptions: {
       enabled: true, // add a button to board for easy item creation
       content: '+ Add New Item', // text or html content of the board button
-      class: 'kanban-title-button btn', // default class of the button
+      class: 'kanban-title-button btn btn-default btn-xs shadow-none text-capitalize', // default class of the button
       footer: false // position the button on footer
     },
     click: function (el) {
@@ -215,9 +215,9 @@
         .querySelector('.assigned')
         .insertAdjacentHTML(
           'afterbegin',
-          renderAvatar(avatars, false, 'xs', '1', el.getAttribute('data-members')) +
-            "<div class='avatar avatar-xs ms-1'>" +
-            "<span class='avatar-initial rounded-circle bg-label-secondary'><i class='ti ti-plus ti-xs text-heading'></i></span>" +
+          renderAvatar(avatars, false, 'sm', '2', el.getAttribute('data-members')) +
+            "<div class='avatar avatar-sm ms-2'>" +
+            "<span class='avatar-initial rounded-circle bg-label-secondary'><i class='mdi mdi-plus'></i></span>" +
             '</div>'
         );
     },
@@ -227,11 +227,11 @@
       addNew.setAttribute('class', 'new-item-form');
       addNew.innerHTML =
         '<div class="mb-3">' +
-        '<textarea class="form-control add-new-item" rows="2" placeholder="Add Content" autofocus required></textarea>' +
+        '<textarea class="form-control add-new-item" rows="3" placeholder="Add Content" autofocus required></textarea>' +
         '</div>' +
         '<div class="mb-3">' +
         '<button type="submit" class="btn btn-primary btn-sm me-2">Add</button>' +
-        '<button type="button" class="btn btn-label-secondary btn-sm cancel-add-item">Cancel</button>' +
+        '<button type="button" class="btn btn-outline-secondary btn-sm cancel-add-item">Cancel</button>' +
         '</div>';
       kanban.addForm(boardId, addNew);
 
@@ -299,7 +299,7 @@
       let img = '';
       if (el.getAttribute('data-image') !== null) {
         img =
-          "<img class='img-fluid rounded mb-2' src='" +
+          "<img class='img-fluid mb-2 rounded-3' src='" +
           assetsPath +
           'img/elements/' +
           el.getAttribute('data-image') +

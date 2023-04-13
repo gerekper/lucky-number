@@ -340,12 +340,6 @@ class TemplateCustomizer {
       }
     }
 
-    //  Horizontal menu fixed layout - disabled fixed navbar switch
-    if (!hasMenu && this.settings.layoutType == 'fixed' && this._hasControls('layoutNavbarFixed')) {
-      this._controls.layoutNavbarFixed.setAttribute('disabled', 'disabled')
-      this._controls.layoutNavbarFixedW.classList.add('disabled')
-    }
-
     if (this._controls.layoutType) {
       // ? Uncomment If using offcanvas layout
       /*

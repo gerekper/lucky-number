@@ -1,5 +1,5 @@
 /**
- *  Modal Example Create App
+ *  Modal Example Wizard
  */
 
 'use strict';

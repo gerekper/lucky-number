@@ -61,7 +61,7 @@ $(function () {
             } else {
               // For Avatar badge
               var stateNum = Math.floor(Math.random() * 6);
-              var states = ['success', 'danger', 'warning', 'info', 'primary', 'secondary'];
+              var states = ['success', 'danger', 'warning', 'info', 'dark', 'primary', 'secondary'];
               var $state = states[stateNum],
                 $name = full['project_name'],
                 $initials = $name.match(/\b\w/g) || [];
@@ -118,8 +118,8 @@ $(function () {
             var $status_number = full['status'];
             return (
               '<div class="d-flex align-items-center">' +
-              '<div class="progress w-100 me-3" style="height: 6px;">' +
-              '<div class="progress-bar" style="width: ' +
+              '<div class="progress w-100 me-3 rounded" style="height: 6px;">' +
+              '<div class="progress-bar rounded" style="width: ' +
               $status_number +
               '" aria-valuenow="' +
               $status_number +
@@ -140,7 +140,7 @@ $(function () {
           render: function (data, type, full, meta) {
             return (
               '<div class="d-inline-block">' +
-              '<a href="javascript:;" class="btn btn-sm btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="ti ti-dots-vertical"></i></a>' +
+              '<a href="javascript:;" class="btn btn-sm btn-icon btn-text-secondary rounded-pill dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="mdi mdi-dots-vertical mdi-24px text-muted"></i></a>' +
               '<div class="dropdown-menu dropdown-menu-end m-0">' +
               '<a href="javascript:;" class="dropdown-item">Details</a>' +
               '<a href="javascript:;" class="dropdown-item">Archive</a>' +
@@ -191,11 +191,4 @@ $(function () {
     });
     $('div.head-label').html('<h5 class="card-title mb-0">Projects</h5>');
   }
-
-  // Filter form control to default size
-  // ? setTimeout used for multilingual table initialization
-  setTimeout(() => {
-    $('.dataTables_filter .form-control').removeClass('form-control-sm');
-    $('.dataTables_length .form-select').removeClass('form-select-sm');
-  }, 300);
 });

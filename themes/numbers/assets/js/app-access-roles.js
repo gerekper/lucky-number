@@ -17,11 +17,12 @@ $(function () {
 
   // Users List datatable
   if (dtUserTable.length) {
-    var dtUser = dtUserTable.DataTable({
+    dtUserTable.DataTable({
       ajax: assetsPath + 'json/user-list.json', // JSON file to add data
       columns: [
         // columns according to JSON
         { data: '' },
+        { data: 'full_name' },
         { data: 'full_name' },
         { data: 'role' },
         { data: 'current_plan' },
@@ -42,8 +43,19 @@ $(function () {
           }
         },
         {
-          // User full name and email
+          // For Checkboxes
           targets: 1,
+          orderable: false,
+          render: function () {
+            return '<input type="checkbox" class="dt-checkboxes form-check-input">';
+          },
+          checkboxes: {
+            selectAllRender: '<input type="checkbox" class="form-check-input">'
+          }
+        },
+        {
+          // User full name and email
+          targets: 2,
           responsivePriority: 4,
           render: function (data, type, full, meta) {
             var $name = full['full_name'],
@@ -55,8 +67,8 @@ $(function () {
                 '<img src="' + assetsPath + 'img/avatars/' + $image + '" alt="Avatar" class="rounded-circle">';
             } else {
               // For Avatar badge
-              var stateNum = Math.floor(Math.random() * 6);
-              var states = ['success', 'danger', 'warning', 'info', 'primary', 'secondary'];
+              var stateNum = Math.floor(Math.random() * 6) + 1;
+              var states = ['success', 'danger', 'warning', 'info', 'dark', 'primary', 'secondary'];
               var $state = states[stateNum],
                 $name = full['full_name'],
                 $initials = $name.match(/\b\w/g) || [];
@@ -74,10 +86,10 @@ $(function () {
               '<div class="d-flex flex-column">' +
               '<a href="' +
               userView +
-              '" class="text-body text-truncate"><span class="fw-semibold">' +
+              '" class="text-body text-truncate"><span class="fw-medium text-heading">' +
               $name +
               '</span></a>' +
-              '<small class="text-muted">@' +
+              '<small class="text-muted">' +
               $email +
               '</small>' +
               '</div>' +
@@ -87,41 +99,36 @@ $(function () {
         },
         {
           // User Role
-          targets: 2,
+          targets: 3,
           render: function (data, type, full, meta) {
             var $role = full['role'];
             var roleBadgeObj = {
-              Subscriber:
-                '<span class="badge badge-center rounded-pill bg-label-warning me-3 w-px-30 h-px-30"><i class="ti ti-user ti-sm"></i></span>',
-              Author:
-                '<span class="badge badge-center rounded-pill bg-label-success me-3 w-px-30 h-px-30"><i class="ti ti-settings ti-sm"></i></span>',
-              Maintainer:
-                '<span class="badge badge-center rounded-pill bg-label-primary me-3 w-px-30 h-px-30"><i class="ti ti-chart-pie-2 ti-sm"></i></span>',
-              Editor:
-                '<span class="badge badge-center rounded-pill bg-label-info me-3 w-px-30 h-px-30"><i class="ti ti-edit ti-sm"></i></span>',
-              Admin:
-                '<span class="badge badge-center rounded-pill bg-label-secondary me-3 w-px-30 h-px-30"><i class="ti ti-device-laptop ti-sm"></i></span>'
+              Subscriber: '<i class="mdi mdi-account-outline mdi-20px text-primary me-2"></i>',
+              Author: '<i class="mdi mdi-cog-outline mdi-20px text-warning me-2"></i>',
+              Maintainer: '<i class="mdi mdi-chart-donut mdi-20px text-success me-2"></i>',
+              Editor: '<i class="mdi mdi-pencil-outline mdi-20px text-info me-2"></i>',
+              Admin: '<i class="mdi mdi-laptop mdi-20px text-danger me-2"></i>'
             };
             return "<span class='text-truncate d-flex align-items-center'>" + roleBadgeObj[$role] + $role + '</span>';
           }
         },
         {
           // Plans
-          targets: 3,
+          targets: 4,
           render: function (data, type, full, meta) {
             var $plan = full['current_plan'];
 
-            return '<span class="fw-semibold">' + $plan + '</span>';
+            return '<span class="text-heading">' + $plan + '</span>';
           }
         },
         {
           // User Status
-          targets: 5,
+          targets: 6,
           render: function (data, type, full, meta) {
             var $status = full['status'];
 
             return (
-              '<span class="badge ' +
+              '<span class="badge rounded-pill ' +
               statusObj[$status].class +
               '" text-capitalized>' +
               statusObj[$status].title +
@@ -137,22 +144,14 @@ $(function () {
           orderable: false,
           render: function (data, type, full, meta) {
             return (
-              '<div class="d-flex align-items-center">' +
               '<a href="' +
               userView +
-              '" class="btn btn-sm btn-icon"><i class="ti ti-eye"></i></a>' +
-              '<a href="javascript:;" class="text-body delete-record"><i class="ti ti-trash ti-sm mx-2"></i></a>' +
-              '<a href="javascript:;" class="text-body dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="ti ti-dots-vertical ti-sm mx-1"></i></a>' +
-              '<div class="dropdown-menu dropdown-menu-end m-0">' +
-              '<a href="javascript:;"" class="dropdown-item">Edit</a>' +
-              '<a href="javascript:;" class="dropdown-item">Suspend</a>' +
-              '</div>' +
-              '</div>'
+              '" class="btn btn-sm btn-icon btn-text-secondary rounded-pill"><i class="mdi mdi-eye-outline mdi-20px"></i></a>'
             );
           }
         }
       ],
-      order: [[1, 'desc']],
+      order: [[2, 'desc']],
       dom:
         '<"row mx-2"' +
         '<"col-sm-12 col-md-4 col-lg-6" l>' +
@@ -203,7 +202,7 @@ $(function () {
       initComplete: function () {
         // Adding role filter once table initialized
         this.api()
-          .columns(2)
+          .columns(3)
           .every(function () {
             var column = this;
             var select = $(
@@ -226,17 +225,6 @@ $(function () {
       }
     });
   }
-  // Delete Record
-  $('.datatables-users tbody').on('click', '.delete-record', function () {
-    dtUser.row($(this).parents('tr')).remove().draw();
-  });
-
-  // Filter form control to default size
-  // ? setTimeout used for multilingual table initialization
-  setTimeout(() => {
-    $('.dataTables_filter .form-control').removeClass('form-control-sm');
-    $('.dataTables_length .form-select').removeClass('form-select-sm');
-  }, 300);
 });
 
 (function () {

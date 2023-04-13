@@ -55,12 +55,20 @@ $(function () {
             var $assignedTo = full['assigned_to'],
               $output = '';
             var roleBadgeObj = {
-              Admin: '<a href="' + userList + '"><span class="badge bg-label-primary m-1">Administrator</span></a>',
-              Manager: '<a href="' + userList + '"><span class="badge bg-label-warning m-1">Manager</span></a>',
-              Users: '<a href="' + userList + '"><span class="badge bg-label-success m-1">Users</span></a>',
-              Support: '<a href="' + userList + '"><span class="badge bg-label-info m-1">Support</span></a>',
+              Admin:
+                '<a href="' +
+                userList +
+                '"><span class="badge rounded-pill bg-label-primary m-1">Administrator</span></a>',
+              Manager:
+                '<a href="' + userList + '"><span class="badge rounded-pill bg-label-warning m-1">Manager</span></a>',
+              Users:
+                '<a href="' + userList + '"><span class="badge rounded-pill bg-label-success m-1">Users</span></a>',
+              Support:
+                '<a href="' + userList + '"><span class="badge rounded-pill bg-label-info m-1">Support</span></a>',
               Restricted:
-                '<a href="' + userList + '"><span class="badge bg-label-danger m-1">Restricted User</span></a>'
+                '<a href="' +
+                userList +
+                '"><span class="badge rounded-pill bg-label-danger m-1">Restricted User</span></a>'
             };
             for (var i = 0; i < $assignedTo.length; i++) {
               var val = $assignedTo[i];
@@ -86,8 +94,8 @@ $(function () {
           orderable: false,
           render: function (data, type, full, meta) {
             return (
-              '<span class="text-nowrap"><button class="btn btn-sm btn-icon me-2" data-bs-target="#editPermissionModal" data-bs-toggle="modal" data-bs-dismiss="modal"><i class="ti ti-edit"></i></button>' +
-              '<button class="btn btn-sm btn-icon delete-record"><i class="ti ti-trash"></i></button></span>'
+              '<span class="text-nowrap"><button class="btn btn-sm btn-icon btn-text-secondary rounded-pill btn-icon me-2" data-bs-target="#editPermissionModal" data-bs-toggle="modal" data-bs-dismiss="modal"><i class="mdi mdi-pencil-outline mdi-20px"></i></button>' +
+              '<button class="btn btn-sm btn-icon btn-text-secondary rounded-pill btn-icon delete-record"><i class="mdi mdi-delete-outline mdi-20px"></i></button></span>'
             );
           }
         }
@@ -185,11 +193,4 @@ $(function () {
   $('.datatables-permissions tbody').on('click', '.delete-record', function () {
     dt_permission.row($(this).parents('tr')).remove().draw();
   });
-
-  // Filter form control to default size
-  // ? setTimeout used for multilingual table initialization
-  setTimeout(() => {
-    $('.dataTables_filter .form-control').removeClass('form-control-sm');
-    $('.dataTables_length .form-select').removeClass('form-select-sm');
-  }, 300);
 });

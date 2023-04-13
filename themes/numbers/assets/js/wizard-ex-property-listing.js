@@ -32,7 +32,9 @@
   }
 
   if (flatpickrRange) {
-    flatpickrRange.flatpickr();
+    flatpickrRange.flatpickr({
+      minDate: 'today'
+    });
   }
 
   // Tagify (Furnishing details)

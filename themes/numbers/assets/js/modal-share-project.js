@@ -8,6 +8,7 @@ $(function () {
 
   var shareProject = document.getElementById('shareProject');
   shareProject.addEventListener('show.bs.modal', function (event) {
+    // do something...
     if (select2ShareProject.length) {
       function renderAvatar(option) {
         if (!option.id) {

@@ -10,38 +10,38 @@
 // JS global variables
 let config = {
   colors: {
-    primary: '#7367f0',
-    secondary: '#a8aaae',
-    success: '#28c76f',
-    info: '#00cfe8',
-    warning: '#ff9f43',
-    danger: '#ea5455',
+    primary: '#666cff',
+    secondary: '#6d788d',
+    success: '#72e128',
+    info: '#26c6f9',
+    warning: '#fdb528',
+    danger: '#ff4d49',
     dark: '#4b4b4b',
     black: '#000',
     white: '#fff',
     cardColor: '#fff',
-    bodyBg: '#f8f7fa',
-    bodyColor: '#6f6b7d',
-    headingColor: '#5d596c',
-    textMuted: '#a5a3ae',
-    borderColor: '#dbdade'
+    bodyBg: '#f7f7f9',
+    bodyColor: '#828393',
+    headingColor: '#636578',
+    textMuted: '#bbbcc4',
+    borderColor: '#eaeaec'
   },
   colors_label: {
-    primary: '#7367f029',
-    secondary: '#a8aaae29',
-    success: '#28c76f29',
-    info: '#00cfe829',
-    warning: '#ff9f4329',
-    danger: '#ea545529',
+    primary: '#666cff29',
+    secondary: '#6d788d29',
+    success: '#72e12829',
+    info: '#26c6f929',
+    warning: '#fdb52829',
+    danger: '#ff4d4929',
     dark: '#4b4b4b29'
   },
   colors_dark: {
-    cardColor: '#2f3349',
-    bodyBg: '#25293c',
-    bodyColor: '#b6bee3',
-    headingColor: '#cfd3ec',
-    textMuted: '#7983bb',
-    borderColor: '#434968'
+    cardColor: '#30334e',
+    bodyBg: '#282a42',
+    bodyColor: '#a0a1b8',
+    headingColor: '#d2d2e8',
+    textMuted: '#777991',
+    borderColor: '#464963'
   },
   enableMenuLocalStorage: true // Enable menu state with local storage support
 };

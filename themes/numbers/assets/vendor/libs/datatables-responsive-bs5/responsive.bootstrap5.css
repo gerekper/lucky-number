@@ -228,9 +228,3 @@ table.dataTable.dtr-column > tbody > tr > th.control:before {
 .modal.dtr-bs-modal .table tr:last-child > td {
   border-bottom: 0;
 }
-.modal.dtr-bs-modal .table .btn {
-  box-shadow: none !important;
-}
-.modal.dtr-bs-modal .table .emp_name {
-  font-weight: 600;
-}

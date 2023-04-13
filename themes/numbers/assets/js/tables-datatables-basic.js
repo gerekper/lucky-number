@@ -180,7 +180,7 @@ $(function () {
             } else {
               // For Avatar badge
               var stateNum = Math.floor(Math.random() * 6);
-              var states = ['success', 'danger', 'warning', 'info', 'primary', 'secondary'];
+              var states = ['success', 'danger', 'warning', 'info', 'dark', 'primary', 'secondary'];
               var $state = states[stateNum],
                 $name = full['full_name'],
                 $initials = $name.match(/\b\w/g) || [];
@@ -227,7 +227,11 @@ $(function () {
               return data;
             }
             return (
-              '<span class="badge ' + $status[$status_number].class + '">' + $status[$status_number].title + '</span>'
+              '<span class="badge rounded-pill ' +
+              $status[$status_number].class +
+              '">' +
+              $status[$status_number].title +
+              '</span>'
             );
           }
         },
@@ -240,7 +244,7 @@ $(function () {
           render: function (data, type, full, meta) {
             return (
               '<div class="d-inline-block">' +
-              '<a href="javascript:;" class="btn btn-sm btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="text-primary ti ti-dots-vertical"></i></a>' +
+              '<a href="javascript:;" class="btn btn-sm btn-text-secondary rounded-pill btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="mdi mdi-dots-vertical"></i></a>' +
               '<ul class="dropdown-menu dropdown-menu-end m-0">' +
               '<li><a href="javascript:;" class="dropdown-item">Details</a></li>' +
               '<li><a href="javascript:;" class="dropdown-item">Archive</a></li>' +
@@ -248,7 +252,7 @@ $(function () {
               '<li><a href="javascript:;" class="dropdown-item text-danger delete-record">Delete</a></li>' +
               '</ul>' +
               '</div>' +
-              '<a href="javascript:;" class="btn btn-sm btn-icon item-edit"><i class="text-primary ti ti-pencil"></i></a>'
+              '<a href="javascript:;" class="btn btn-sm btn-text-secondary rounded-pill btn-icon item-edit"><i class="mdi mdi-pencil-outline"></i></a>'
             );
           }
         }
@@ -261,11 +265,11 @@ $(function () {
         {
           extend: 'collection',
           className: 'btn btn-label-primary dropdown-toggle me-2',
-          text: '<i class="ti ti-file-export me-sm-1"></i> <span class="d-none d-sm-inline-block">Export</span>',
+          text: '<i class="mdi mdi-export-variant me-sm-1"></i> <span class="d-none d-sm-inline-block">Export</span>',
           buttons: [
             {
               extend: 'print',
-              text: '<i class="ti ti-printer me-1" ></i>Print',
+              text: '<i class="mdi mdi-printer-outline me-1" ></i>Print',
               className: 'dropdown-item',
               exportOptions: {
                 columns: [3, 4, 5, 6, 7],
@@ -302,7 +306,7 @@ $(function () {
             },
             {
               extend: 'csv',
-              text: '<i class="ti ti-file-text me-1" ></i>Csv',
+              text: '<i class="mdi mdi-file-document-outline me-1" ></i>Csv',
               className: 'dropdown-item',
               exportOptions: {
                 columns: [3, 4, 5, 6, 7],
@@ -326,7 +330,7 @@ $(function () {
             },
             {
               extend: 'excel',
-              text: '<i class="ti ti-file-spreadsheet me-1"></i>Excel',
+              text: '<i class="mdi mdi-file-excel-outline me-1"></i>Excel',
               className: 'dropdown-item',
               exportOptions: {
                 columns: [3, 4, 5, 6, 7],
@@ -350,7 +354,7 @@ $(function () {
             },
             {
               extend: 'pdf',
-              text: '<i class="ti ti-file-description me-1"></i>Pdf',
+              text: '<i class="mdi mdi-file-pdf-box me-1"></i>Pdf',
               className: 'dropdown-item',
               exportOptions: {
                 columns: [3, 4, 5, 6, 7],
@@ -374,7 +378,7 @@ $(function () {
             },
             {
               extend: 'copy',
-              text: '<i class="ti ti-copy me-1" ></i>Copy',
+              text: '<i class="mdi mdi-content-copy me-1" ></i>Copy',
               className: 'dropdown-item',
               exportOptions: {
                 columns: [3, 4, 5, 6, 7],
@@ -399,7 +403,7 @@ $(function () {
           ]
         },
         {
-          text: '<i class="ti ti-plus me-sm-1"></i> <span class="d-none d-sm-inline-block">Add New Record</span>',
+          text: '<i class="mdi mdi-plus me-sm-1"></i> <span class="d-none d-sm-inline-block">Add New Record</span>',
           className: 'create-new btn btn-primary'
         }
       ],
@@ -506,7 +510,11 @@ $(function () {
               return data;
             }
             return (
-              '<span class="badge ' + $status[$status_number].class + '">' + $status[$status_number].title + '</span>'
+              '<span class="badge rounded-pill ' +
+              $status[$status_number].class +
+              '">' +
+              $status[$status_number].title +
+              '</span>'
             );
           }
         },
@@ -518,7 +526,7 @@ $(function () {
           render: function (data, type, full, meta) {
             return (
               '<div class="d-inline-block">' +
-              '<a href="javascript:;" class="btn btn-sm btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="text-primary ti ti-dots-vertical"></i></a>' +
+              '<a href="javascript:;" class="btn btn-sm btn-text-secondary rounded-pill btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="mdi mdi-dots-vertical"></i></a>' +
               '<div class="dropdown-menu dropdown-menu-end m-0">' +
               '<a href="javascript:;" class="dropdown-item">Details</a>' +
               '<a href="javascript:;" class="dropdown-item">Archive</a>' +
@@ -526,7 +534,7 @@ $(function () {
               '<a href="javascript:;" class="dropdown-item text-danger delete-record">Delete</a>' +
               '</div>' +
               '</div>' +
-              '<a href="javascript:;" class="btn btn-sm btn-icon item-edit"><i class="text-primary ti ti-pencil"></i></a>'
+              '<a href="javascript:;" class="btn btn-sm btn-text-secondary rounded-pill btn-icon item-edit"><i class="mdi mdi-pencil-outline"></i></a>'
             );
           }
         }
@@ -583,7 +591,11 @@ $(function () {
               return data;
             }
             return (
-              '<span class="badge ' + $status[$status_number].class + '">' + $status[$status_number].title + '</span>'
+              '<span class="badge rounded-pill ' +
+              $status[$status_number].class +
+              '">' +
+              $status[$status_number].title +
+              '</span>'
             );
           }
         },
@@ -596,7 +608,7 @@ $(function () {
           render: function (data, type, full, meta) {
             return (
               '<div class="d-inline-block">' +
-              '<a href="javascript:;" class="btn btn-sm btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="text-primary ti ti-dots-vertical"></i></a>' +
+              '<a href="javascript:;" class="btn btn-sm btn-text-secondary rounded-pill btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="mdi mdi-dots-vertical"></i></a>' +
               '<div class="dropdown-menu dropdown-menu-end m-0">' +
               '<a href="javascript:;" class="dropdown-item">Details</a>' +
               '<a href="javascript:;" class="dropdown-item">Archive</a>' +
@@ -604,7 +616,7 @@ $(function () {
               '<a href="javascript:;" class="dropdown-item text-danger delete-record">Delete</a>' +
               '</div>' +
               '</div>' +
-              '<a href="javascript:;" class="btn btn-sm btn-icon item-edit"><i class="text-primary ti ti-pencil"></i></a>'
+              '<a href="javascript:;" class="btn btn-sm btn-text-secondary rounded-pill btn-icon item-edit"><i class="mdi mdi-pencil-outline"></i></a>'
             );
           }
         }
@@ -720,7 +732,11 @@ $(function () {
               return data;
             }
             return (
-              '<span class="badge ' + $status[$status_number].class + '">' + $status[$status_number].title + '</span>'
+              '<span class="badge rounded-pill ' +
+              $status[$status_number].class +
+              '">' +
+              $status[$status_number].title +
+              '</span>'
             );
           }
         },
@@ -733,7 +749,7 @@ $(function () {
           render: function (data, type, full, meta) {
             return (
               '<div class="d-inline-block">' +
-              '<a href="javascript:;" class="btn btn-sm btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="text-primary ti ti-dots-vertical"></i></a>' +
+              '<a href="javascript:;" class="btn btn-sm btn-text-secondary rounded-pill btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="mdi mdi-dots-vertical"></i></a>' +
               '<div class="dropdown-menu dropdown-menu-end m-0">' +
               '<a href="javascript:;" class="dropdown-item">Details</a>' +
               '<a href="javascript:;" class="dropdown-item">Archive</a>' +
@@ -741,7 +757,7 @@ $(function () {
               '<a href="javascript:;" class="dropdown-item text-danger delete-record">Delete</a>' +
               '</div>' +
               '</div>' +
-              '<a href="javascript:;" class="btn btn-sm btn-icon item-edit"><i class="text-primary ti ti-pencil"></i></a>'
+              '<a href="javascript:;" class="btn btn-sm btn-text-secondary rounded-pill btn-icon item-edit"><i class="mdi mdi-pencil-outline"></i></a>'
             );
           }
         }
@@ -786,11 +802,4 @@ $(function () {
       }
     });
   }
-
-  // Filter form control to default size
-  // ? setTimeout used for multilingual table initialization
-  setTimeout(() => {
-    $('.dataTables_filter .form-control').removeClass('form-control-sm');
-    $('.dataTables_length .form-select').removeClass('form-select-sm');
-  }, 300);
 });

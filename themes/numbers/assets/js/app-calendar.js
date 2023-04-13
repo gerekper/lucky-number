@@ -199,7 +199,7 @@ document.addEventListener('DOMContentLoaded', function () {
       fcSidebarToggleButton.setAttribute('data-bs-toggle', 'sidebar');
       fcSidebarToggleButton.setAttribute('data-overlay', '');
       fcSidebarToggleButton.setAttribute('data-target', '#app-calendar-sidebar');
-      fcSidebarToggleButton.insertAdjacentHTML('beforeend', '<i class="ti ti-menu-2 ti-sm"></i>');
+      fcSidebarToggleButton.insertAdjacentHTML('beforeend', '<i class="mdi mdi-menu mdi-24px text-body"></i>');
     }
 
     // Filter events by calender
@@ -339,7 +339,7 @@ document.addEventListener('DOMContentLoaded', function () {
           eleValidClass: '',
           rowSelector: function (field, ele) {
             // field is the field name & ele is the field element
-            return '.mb-3';
+            return '.mb-4';
           }
         }),
         submitButton: new FormValidation.plugins.SubmitButton(),

@@ -45,7 +45,11 @@ $(function () {
               return data;
             }
             return (
-              '<span class="badge ' + $status[$status_number].class + '">' + $status[$status_number].title + '</span>'
+              '<span class="badge rounded-pill ' +
+              $status[$status_number].class +
+              '">' +
+              $status[$status_number].title +
+              '</span>'
             );
           }
         },
@@ -58,7 +62,7 @@ $(function () {
           render: function (data, type, full, meta) {
             return (
               '<div class="d-inline-block">' +
-              '<a href="javascript:;" class="btn btn-sm btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="text-primary ti ti-dots-vertical"></i></a>' +
+              '<a href="javascript:;" class="btn btn-sm btn-text-secondary rounded-pill btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="mdi mdi-dots-vertical"></i></a>' +
               '<div class="dropdown-menu dropdown-menu-end m-0">' +
               '<a href="javascript:;" class="dropdown-item">Details</a>' +
               '<a href="javascript:;" class="dropdown-item">Archive</a>' +
@@ -66,7 +70,7 @@ $(function () {
               '<a href="javascript:;" class="dropdown-item text-danger delete-record">Delete</a>' +
               '</div>' +
               '</div>' +
-              '<a href="javascript:;" class="item-edit text-body"><i class="text-primary ti ti-pencil"></i></a>'
+              '<a href="javascript:;" class="btn btn-sm btn-text-secondary rounded-pill btn-icon item-edit"><i class="mdi mdi-pencil-outline"></i></a>'
             );
           }
         }
@@ -135,7 +139,7 @@ $(function () {
             } else {
               // For Avatar badge
               var stateNum = Math.floor(Math.random() * 6);
-              var states = ['success', 'danger', 'warning', 'info', 'primary', 'secondary'];
+              var states = ['success', 'danger', 'warning', 'info', 'dark', 'primary', 'secondary'];
               var $state = states[stateNum],
                 $name = full['full_name'];
               var $initials = $name.match(/\b\w/g) || [];
@@ -189,7 +193,11 @@ $(function () {
               return data;
             }
             return (
-              '<span class="badge ' + $status[$status_number].class + '">' + $status[$status_number].title + '</span>'
+              '<span class="badge rounded-pill ' +
+              $status[$status_number].class +
+              '">' +
+              $status[$status_number].title +
+              '</span>'
             );
           }
         },
@@ -201,7 +209,7 @@ $(function () {
           render: function (data, type, full, meta) {
             return (
               '<div class="d-inline-block">' +
-              '<a href="javascript:;" class="btn btn-sm btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="text-primary ti ti-dots-vertical"></i></a>' +
+              '<a href="javascript:;" class="btn btn-sm btn-text-secondary rounded-pill btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="mdi mdi-dots-vertical"></i></a>' +
               '<div class="dropdown-menu dropdown-menu-end m-0">' +
               '<a href="javascript:;" class="dropdown-item">Details</a>' +
               '<a href="javascript:;" class="dropdown-item">Archive</a>' +
@@ -209,7 +217,7 @@ $(function () {
               '<a href="javascript:;" class="dropdown-item text-danger delete-record">Delete</a>' +
               '</div>' +
               '</div>' +
-              '<a href="javascript:;" class="btn btn-sm btn-icon item-edit"><i class="text-primary ti ti-pencil"></i></a>'
+              '<a href="javascript:;" class="btn btn-sm btn-text-secondary rounded-pill btn-icon item-edit"><i class="mdi mdi-pencil-outline"></i></a>'
             );
           }
         }
@@ -295,7 +303,11 @@ $(function () {
               return data;
             }
             return (
-              '<span class="badge ' + $status[$status_number].class + '">' + $status[$status_number].title + '</span>'
+              '<span class="badge rounded-pill ' +
+              $status[$status_number].class +
+              '">' +
+              $status[$status_number].title +
+              '</span>'
             );
           }
         },
@@ -308,7 +320,7 @@ $(function () {
           render: function (data, type, full, meta) {
             return (
               '<div class="d-inline-block">' +
-              '<a href="javascript:;" class="btn btn-sm btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="text-primary ti ti-dots-vertical"></i></a>' +
+              '<a href="javascript:;" class="btn btn-sm btn-text-secondary rounded-pill btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="mdi mdi-dots-vertical"></i></a>' +
               '<div class="dropdown-menu dropdown-menu-end m-0">' +
               '<a href="javascript:;" class="dropdown-item">Details</a>' +
               '<a href="javascript:;" class="dropdown-item">Archive</a>' +
@@ -316,7 +328,7 @@ $(function () {
               '<a href="javascript:;" class="dropdown-item text-danger delete-record"></i>Delete</a>' +
               '</div>' +
               '</div>' +
-              '<a href="javascript:;" class="item-edit text-body"><i class="text-primary ti ti-pencil"></i></a>'
+              '<a href="javascript:;" class="btn btn-sm btn-text-secondary rounded-pill btn-icon item-edit"><i class="mdi mdi-pencil-outline"></i></a>'
             );
           }
         }
@@ -378,7 +390,11 @@ $(function () {
               return data;
             }
             return (
-              '<span class="badge ' + $status[$status_number].class + '">' + $status[$status_number].title + '</span>'
+              '<span class="badge rounded-pill ' +
+              $status[$status_number].class +
+              '">' +
+              $status[$status_number].title +
+              '</span>'
             );
           }
         }
@@ -391,11 +407,4 @@ $(function () {
       }
     });
   }
-
-  // Filter form control to default size
-  // ? setTimeout used for multilingual table initialization
-  setTimeout(() => {
-    $('.dataTables_filter .form-control').removeClass('form-control-sm');
-    $('.dataTables_length .form-select').removeClass('form-select-sm');
-  }, 200);
 });

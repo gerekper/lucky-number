@@ -1120,17 +1120,17 @@
 }
 
 .light-style .pcr-app .pcr-interaction input:focus {
-  box-shadow: 0 0.25rem 1rem rgba(165, 163, 174, 0.45);
+  box-shadow: 0 0.25rem 0.5rem rgba(76, 78, 100, 0.1);
 }
 
 .dark-style .pcr-app {
-  background: #2f3349 !important;
+  background: #30334e !important;
 }
 .dark-style .pcr-app .pcr-type:not(.active),
 .dark-style .pcr-app .pcr-result {
-  background: #2f3349 !important;
+  background: #30334e !important;
   color: #fff !important;
 }
 .dark-style .pcr-app .pcr-interaction input:focus {
-  box-shadow: 0 0.25rem 1rem rgba(15, 20, 34, 0.55);
+  box-shadow: 0 0.25rem 0.5rem rgba(21, 21, 28, 0.55);
 }

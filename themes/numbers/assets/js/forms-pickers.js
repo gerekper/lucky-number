@@ -180,8 +180,7 @@ $(function () {
     bsRangePickerTime = $('#bs-rangepicker-time'),
     bsRangePickerRange = $('#bs-rangepicker-range'),
     bsRangePickerWeekNum = $('#bs-rangepicker-week-num'),
-    bsRangePickerDropdown = $('#bs-rangepicker-dropdown'),
-    bsRangePickerCancelBtn = document.getElementsByClassName('cancelBtn');
+    bsRangePickerDropdown = $('#bs-rangepicker-dropdown');
 
   // Basic
   if (bsRangePickerBasic.length) {
@@ -237,12 +236,6 @@ $(function () {
       showDropdowns: true,
       opens: isRtl ? 'left' : 'right'
     });
-  }
-
-  // Adding btn-secondary class in cancel btn
-  for (var i = 0; i < bsRangePickerCancelBtn.length; i++) {
-    bsRangePickerCancelBtn[i].classList.remove('btn-default');
-    bsRangePickerCancelBtn[i].classList.add('btn-secondary');
   }
 
   // jQuery Timepicker

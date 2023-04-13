@@ -15,13 +15,44 @@ if (document.getElementById('layout-menu')) {
 }
 
 (function () {
+  // Button & Pagination Waves effect
   if (typeof Waves !== 'undefined') {
     Waves.init();
-    Waves.attach(".btn[class*='btn-']:not([class*='btn-outline-']):not([class*='btn-label-'])", ['waves-light']);
-    Waves.attach("[class*='btn-outline-']");
-    Waves.attach("[class*='btn-label-']");
+    Waves.attach(
+      ".btn[class*='btn-']:not(.position-relative):not([class*='btn-outline-']):not([class*='btn-label-'])",
+      ['waves-light']
+    );
+    Waves.attach("[class*='btn-outline-']:not(.position-relative)");
+    Waves.attach("[class*='btn-label-']:not(.position-relative)");
     Waves.attach('.pagination .page-item .page-link');
+    Waves.attach('.dropdown-menu .dropdown-item');
+    Waves.attach('.light-style .list-group .list-group-item-action');
+    Waves.attach('.dark-style .list-group .list-group-item-action', ['waves-light']);
+    Waves.attach('.nav-tabs:not(.nav-tabs-widget) .nav-item .nav-link');
+    Waves.attach('.nav-pills .nav-item .nav-link', ['waves-light']);
+    Waves.attach('.menu-vertical .menu-item .menu-link.menu-toggle');
   }
+
+  // Window scroll function for navbar
+  function onScroll() {
+    var layoutPage = document.querySelector('.layout-page');
+    if (layoutPage) {
+      if (window.pageYOffset > 0) {
+        layoutPage.classList.add('window-scrolled');
+      } else {
+        layoutPage.classList.remove('window-scrolled');
+      }
+    }
+  }
+  // On load time out
+  setTimeout(() => {
+    onScroll();
+  }, 200);
+
+  // On window scroll
+  window.onscroll = function () {
+    onScroll();
+  };
 
   // Initialize menu
   //-----------------
@@ -104,7 +135,7 @@ if (document.getElementById('layout-menu')) {
     // Update style switcher icon and tooltip based on current style
     if (window.Helpers.isLightStyle()) {
       if (styleSwitcherToggleEl) {
-        styleSwitcherToggleEl.querySelector('i').classList.add('ti-moon-stars');
+        styleSwitcherToggleEl.querySelector('i').classList.add('mdi-weather-night');
         new bootstrap.Tooltip(styleSwitcherToggleEl, {
           title: 'Dark mode',
           fallbackPlacements: ['bottom']
@@ -113,7 +144,7 @@ if (document.getElementById('layout-menu')) {
       switchImage('light');
     } else {
       if (styleSwitcherToggleEl) {
-        styleSwitcherToggleEl.querySelector('i').classList.add('ti-sun');
+        styleSwitcherToggleEl.querySelector('i').classList.add('mdi-weather-sunny');
         new bootstrap.Tooltip(styleSwitcherToggleEl, {
           title: 'Light mode',
           fallbackPlacements: ['bottom']
@@ -162,15 +193,20 @@ if (document.getElementById('layout-menu')) {
 
     for (let i = 0; i < dropdownItems.length; i++) {
       dropdownItems[i].addEventListener('click', function () {
-        let currentLanguage = this.getAttribute('data-language'),
-          selectedLangFlag = this.querySelector('.fi').getAttribute('class');
+        let currentLanguage = this.getAttribute('data-language');
 
         for (let sibling of this.parentNode.children) {
-          sibling.classList.remove('selected');
-        }
-        this.classList.add('selected');
+          var siblingEle = sibling.parentElement.parentNode.firstChild;
 
-        languageDropdown[0].querySelector('.dropdown-toggle .fi').className = selectedLangFlag;
+          // Loop through each sibling and push to the array
+          while (siblingEle) {
+            if (siblingEle.nodeType === 1 && siblingEle !== siblingEle.parentElement) {
+              siblingEle.querySelector('.dropdown-item').classList.remove('active');
+            }
+            siblingEle = siblingEle.nextSibling;
+          }
+        }
+        this.classList.add('active');
 
         i18next.changeLanguage(currentLanguage, (err, t) => {
           if (err) return console.log('something went wrong loading', err);
@@ -262,6 +298,9 @@ if (document.getElementById('layout-menu')) {
   // Speech To Text
   window.Helpers.initSpeechToText();
 
+  // Nav tabs animation
+  window.Helpers.navTabsAnimation();
+
   // Init PerfectScrollbar in Navbar Dropdown (i.e notification)
   window.Helpers.initNavbarDropdownScrollbar();
 
@@ -296,6 +335,8 @@ if (document.getElementById('layout-menu')) {
           }
         }, 100);
       }
+
+      window.Helpers.navTabsAnimation();
     },
     true
   );
@@ -442,7 +483,7 @@ if (typeof $ !== 'undefined') {
                     url +
                     '">' +
                     '<div>' +
-                    '<i class="ti ' +
+                    '<i class="mdi ' +
                     icon +
                     ' me-2"></i>' +
                     '<span class="align-middle">' +
@@ -455,7 +496,7 @@ if (typeof $ !== 'undefined') {
                 notFound:
                   '<div class="not-found px-3 py-2">' +
                   '<h6 class="suggestions-header text-primary mb-2">Pages</h6>' +
-                  '<p class="py-2 mb-0"><i class="ti ti-alert-circle ti-xs me-2"></i> No Results Found</p>' +
+                  '<p class="py-2 mb-0"><i class="mdi mdi-alert-circle-outline me-2 mdi-14px"></i> No Results Found</p>' +
                   '</div>'
               }
             },
@@ -495,7 +536,7 @@ if (typeof $ !== 'undefined') {
                 notFound:
                   '<div class="not-found px-3 py-2">' +
                   '<h6 class="suggestions-header text-primary mb-2">Files</h6>' +
-                  '<p class="py-2 mb-0"><i class="ti ti-alert-circle ti-xs me-2"></i> No Results Found</p>' +
+                  '<p class="py-2 mb-0"><i class="mdi mdi-alert-circle-outline me-2 mdi-14px"></i> No Results Found</p>' +
                   '</div>'
               }
             },
@@ -532,7 +573,7 @@ if (typeof $ !== 'undefined') {
                 notFound:
                   '<div class="not-found px-3 py-2">' +
                   '<h6 class="suggestions-header text-primary mb-2">Members</h6>' +
-                  '<p class="py-2 mb-0"><i class="ti ti-alert-circle ti-xs me-2"></i> No Results Found</p>' +
+                  '<p class="py-2 mb-0"><i class="mdi mdi-alert-circle-outline me-2 mdi-14px"></i> No Results Found</p>' +
                   '</div>'
               }
             }

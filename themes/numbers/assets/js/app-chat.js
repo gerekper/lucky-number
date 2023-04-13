@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function () {
           value = e.currentTarget.value;
         //Update status in left sidebar user avatar
         chatLeftSidebarUserAvatar.removeAttribute('class');
-        Helpers._addClass('avatar avatar-xl ' + userStatusObj[value] + '', chatLeftSidebarUserAvatar);
+        Helpers._addClass('avatar avatar-xl w-px-75 h-px-75 ' + userStatusObj[value] + '', chatLeftSidebarUserAvatar);
         //Update status in contacts sidebar user avatar
         let chatContactsUserAvatar = document.querySelector('.app-chat-contacts .avatar');
         chatContactsUserAvatar.removeAttribute('class');
@@ -161,7 +161,7 @@ document.addEventListener('DOMContentLoaded', function () {
       if (messageInput.value) {
         // Create a div and add a class
         let renderMsg = document.createElement('div');
-        renderMsg.className = 'chat-message-text mt-2';
+        renderMsg.className = 'chat-message-text mt-3';
         renderMsg.innerHTML = '<p class="mb-0">' + messageInput.value + '</p>';
         document.querySelector('li:last-child .chat-message-wrapper').appendChild(renderMsg);
         messageInput.value = '';

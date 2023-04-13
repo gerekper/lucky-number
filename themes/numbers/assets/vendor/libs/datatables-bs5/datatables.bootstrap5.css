@@ -474,23 +474,6 @@ div.table-responsive > div.dataTables_wrapper > div.row > div[class^=col-]:last-
   padding-right: 0;
 }
 
-div.dataTables_wrapper div.dataTables_length select {
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
-}
-
-div.dataTables_wrapper div.dataTables_filter input {
-  margin-left: 1em;
-}
-
-.dataTable .emp_name {
-  font-weight: 600;
-}
-
-.dataTable td .btn {
-  box-shadow: none !important;
-}
-
 div.dataTables_wrapper .card-header {
   display: flex;
   align-items: center;
@@ -499,7 +482,6 @@ div.dataTables_wrapper .card-header {
 
 div.dataTables_wrapper div.dataTables_info {
   padding-top: 0.5rem;
-  font-size: 0.8125rem;
 }
 
 html:not([dir=rtl]) table.table-bordered.dataTable tr:first-child th:first-child,
@@ -530,7 +512,7 @@ html:not([dir=rtl]) table.table-bordered.dataTable td:last-child {
 }
 [dir=rtl] div.dataTables_wrapper .dataTables_filter input {
   margin-left: 0;
-  margin-right: 1rem;
+  margin-right: 0.5rem;
 }
 [dir=rtl] table.table-bordered.dataTable th,
 [dir=rtl] table.table-bordered.dataTable td {
@@ -548,6 +530,13 @@ table.dataTable {
   margin-bottom: 1rem !important;
   margin-top: 0 !important;
 }
+table.dataTable thead th.sorting:before, table.dataTable thead th.sorting:after {
+  color: #000;
+  visibility: hidden;
+}
+table.dataTable thead th.sorting:hover:before, table.dataTable thead th.sorting:hover:after {
+  visibility: visible;
+}
 [dir=rtl] table.dataTable.table-sm > thead > tr > th {
   padding-left: 1.25rem;
 }
@@ -555,13 +544,15 @@ table.dataTable {
   right: auto !important;
   left: 0.85em !important;
 }
-[dir=rtl] table.dataTable.table-sm .sorting:before, [dir=rtl] table.dataTable.table-sm .sorting_asc:before, [dir=rtl] table.dataTable.table-sm .sorting_desc:before {
-  right: auto !important;
-  left: 0.85em !important;
+[dir=rtl] table.dataTable thead th,
+[dir=rtl] table.dataTable thead td,
+[dir=rtl] table.dataTable tfoot th,
+[dir=rtl] table.dataTable tfoot td {
+  text-align: right;
 }
 table.dataTable .form-check-input {
-  width: 17px;
-  height: 17px;
+  width: 1.25em;
+  height: 1.25em;
 }
 
 .dataTables_scroll {
@@ -572,6 +563,13 @@ table.dataTable thead th {
   vertical-align: middle;
 }
 
+table.dataTable thead .sorting,
+table.dataTable thead .sorting_asc,
+table.dataTable thead .sorting_desc,
+table.dataTable thead .sorting_asc_disabled,
+table.dataTable thead .sorting_desc_disabled {
+  padding-right: inherit;
+}
 table.dataTable thead .sorting::before, table.dataTable thead .sorting::after,
 table.dataTable thead .sorting_asc::before,
 table.dataTable thead .sorting_asc::after,
@@ -581,44 +579,48 @@ table.dataTable thead .sorting_asc_disabled::before,
 table.dataTable thead .sorting_asc_disabled::after,
 table.dataTable thead .sorting_desc_disabled::before,
 table.dataTable thead .sorting_desc_disabled::after {
-  line-height: 1.25rem !important;
-  font-family: tabler-icons !important;
-  font-size: 1rem !important;
+  font-family: "Material Design Icons" !important;
+  font-size: 0.95rem !important;
   width: 10px;
   height: 10px;
-  right: 0.78rem !important;
+  content: "" !important;
+  right: 0.7rem !important;
 }
-table.dataTable thead .sorting::before,
-table.dataTable thead .sorting_asc::before,
-table.dataTable thead .sorting_desc::before,
-table.dataTable thead .sorting_asc_disabled::before,
-table.dataTable thead .sorting_desc_disabled::before {
-  content: "\ea62" !important;
-  top: 0.3rem !important;
+
+table.dataTable thead .sorting:not(.sorting_asc):not(.sorting_desc):before,
+table.dataTable thead .sorting_asc:before,
+table.dataTable thead .sorting_asc_disabled:before {
+  top: 45% !important;
+  content: "\f005d" !important;
 }
-table.dataTable thead .sorting::after,
-table.dataTable thead .sorting_asc::after,
-table.dataTable thead .sorting_desc::after,
-table.dataTable thead .sorting_asc_disabled::after,
-table.dataTable thead .sorting_desc_disabled::after {
-  bottom: 1rem !important;
-  content: "\ea5f" !important;
+table.dataTable thead .sorting:not(.sorting_asc):not(.sorting_desc):after,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_asc_disabled:after {
+  content: "" !important;
 }
-[dir=rtl] table.dataTable thead .sorting::before,
+[dir=rtl] table.dataTable thead .sorting:not(.sorting_asc):not(.sorting_desc)::before,
 [dir=rtl] table.dataTable thead .sorting_asc::before,
-[dir=rtl] table.dataTable thead .sorting_desc::before,
-[dir=rtl] table.dataTable thead .sorting_asc_disabled::before,
-[dir=rtl] table.dataTable thead .sorting_desc_disabled::before {
+[dir=rtl] table.dataTable thead .sorting_asc_disabled::before {
   right: auto !important;
-  left: 0.58em !important;
+  left: 1em !important;
 }
-[dir=rtl] table.dataTable thead .sorting::after,
-[dir=rtl] table.dataTable thead .sorting_asc::after,
-[dir=rtl] table.dataTable thead .sorting_desc::after,
-[dir=rtl] table.dataTable thead .sorting_asc_disabled::after,
-[dir=rtl] table.dataTable thead .sorting_desc_disabled::after {
-  right: auto !important;
-  left: 0.58em !important;
+table.dataTable thead .sorting_desc:after,
+table.dataTable thead .sorting_desc_disabled:after {
+  top: 45% !important;
+  content: "\f0045" !important;
+}
+table.dataTable thead .sorting_desc:before,
+table.dataTable thead .sorting_desc_disabled:before {
+  content: "" !important;
+}
+table.dataTable.table-sm thead .sorting:not(.sorting_asc):not(.sorting_desc):before,
+table.dataTable.table-sm thead .sorting_asc:before,
+table.dataTable.table-sm thead .sorting_asc_disabled:before {
+  top: 42% !important;
+}
+table.dataTable.table-sm thead .sorting_desc,
+table.dataTable.table-sm thead .sorting_desc_disabled {
+  top: 44% !important;
 }
 
 div.card-datatable.dataTable,
@@ -644,7 +646,7 @@ div.card-datatable .dataTable {
 }
 @media screen and (max-width: 767.98px) {
   div.dataTables_wrapper div.dataTables_info {
-    padding-bottom: 0.55rem;
+    padding-bottom: 0.65rem;
     padding-top: 0;
   }
   div.dataTables_wrapper div.dataTables_length {
@@ -657,12 +659,16 @@ div.dataTables_wrapper div.dataTables_filter {
   margin-bottom: 1rem;
 }
 
+div.dataTables_wrapper div.dataTables_paginate ul.pagination .page-item.next .page-link, div.dataTables_wrapper div.dataTables_paginate ul.pagination .page-item.previous .page-link, div.dataTables_wrapper div.dataTables_paginate ul.pagination .page-item.first .page-link, div.dataTables_wrapper div.dataTables_paginate ul.pagination .page-item.last .page-link {
+  border-radius: 0.75rem;
+}
+
 div.dataTables_wrapper div.dataTables_paginate ul.pagination .page-link {
-  padding: 0.594rem 0.35rem;
+  padding: 0.469rem 0.3125rem;
   min-width: calc(
-    1.938rem + 0px
+    1.7505rem + 2px
   );
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
   line-height: 1;
 }
 div.dataTables_wrapper div.dataTables_paginate ul.pagination .page-link div:not(.table-responsive) div.dataTables_wrapper .dataTables_paginate {
@@ -671,11 +677,11 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination .page-link div:not(
 
 @media screen and (max-width: 575.98px) {
   div.dataTables_wrapper div.dataTables_paginate ul.pagination .page-link {
-    padding: 0.5rem 0.15rem;
+    padding: 0.344rem 0.25rem;
     min-width: calc(
-      1.75rem + 0px
+      1.5005rem + 2px
     );
-    font-size: 0.75rem;
+    font-size: 0.8125rem;
     line-height: 1;
   }
 }
@@ -700,20 +706,20 @@ div.card-datatable:not(.table-responsive) .dataTables_wrapper .row:first-child, 
 
 html:not([dir=rtl]) div.card-datatable table.dataTable thead th:first-child,
 html:not([dir=rtl]) div.card-datatable table.dataTable tfoot th:first-child {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
 }
 html:not([dir=rtl]) div.card-datatable table.dataTable thead th:last-child,
 html:not([dir=rtl]) div.card-datatable table.dataTable tfoot th:last-child {
   padding-right: 1rem;
 }
 html:not([dir=rtl]) div.card-datatable table.dataTable tbody td:first-child {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
 }
 
 [dir=rtl] table.dataTable.table-sm > thead > tr > th {
-  padding-right: 1.25rem;
+  padding-right: 0.625rem;
 }
 [dir=rtl] table.dataTable thead th,
 [dir=rtl] table.dataTable tbody td,
@@ -721,41 +727,49 @@ html:not([dir=rtl]) div.card-datatable table.dataTable tbody td:first-child {
   padding-right: 1.25rem;
 }
 [dir=rtl] table.dataTable.table-sm thead th, [dir=rtl] table.dataTable.table-sm tbody td, [dir=rtl] table.dataTable.table-sm tfoot th {
-  padding-right: 1.25rem;
+  padding-right: 0.625rem;
 }
 [dir=rtl] div.card-datatable table.dataTable thead th:first-child,
 [dir=rtl] div.card-datatable table.dataTable tbody td:first-child,
 [dir=rtl] div.card-datatable table.dataTable tfoot th:first-child {
-  padding-right: 1.5rem;
+  padding-right: 1.25rem;
 }
 [dir=rtl] div.card-datatable table.dataTable thead th:last-child,
 [dir=rtl] div.card-datatable table.dataTable tbody td:last-child,
 [dir=rtl] div.card-datatable table.dataTable tfoot th:last-child {
-  padding-left: 1.5rem;
+  padding-left: 1.25rem;
 }
 
 .light-style div.dataTables_wrapper div.dataTables_info {
-  color: #a5a3ae;
+  color: #bbbcc4;
 }
 .light-style div.dataTables_scrollBody table {
-  border-top-color: var(--bs-border-color);
+  border-top-color: #eaeaec;
 }
-.light-style table.dataTable th,
-.light-style table.dataTable td {
-  border-color: var(--bs-border-color) !important;
+.light-style table.table-bordered.dataTable th,
+.light-style table.table-bordered.dataTable td {
+  border-color: #eaeaec !important;
+}
+.light-style table.dataTable thead th.sorting:before,
+.light-style table.dataTable thead th.sorting:after {
+  color: #000;
 }
 
 .dark-style div.dataTables_wrapper div.dataTables_info {
-  color: #7983bb;
+  color: #777991;
 }
 .dark-style div.dataTables_scrollBody table {
-  border-top-color: var(--bs-border-color);
+  border-top-color: #595b75;
 }
-.dark-style table.dataTable th,
-.dark-style table.dataTable td {
-  border-color: var(--bs-border-color) !important;
+.dark-style table.table-bordered.dataTable th,
+.dark-style table.table-bordered.dataTable td {
+  border-color: #595b75 !important;
+}
+.dark-style table.dataTable thead th.sorting:before,
+.dark-style table.dataTable thead th.sorting:after {
+  color: #fff;
 }
 
 div.dataTables_wrapper div.dataTables_paginate ul.pagination .page-item.disabled .page-link {
-  background-color: rgba(134, 146, 208, 0.08);
+  background-color: transparent;
 }

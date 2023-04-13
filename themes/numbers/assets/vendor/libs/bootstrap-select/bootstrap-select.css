@@ -412,20 +412,29 @@ select.selectpicker {
   outline: 0 !important;
 }
 
+.bootstrap-select .dropdown-toggle {
+  transition: none;
+  padding: calc(0.5rem - 1px) calc(0.875rem - 1px);
+  box-shadow: none !important;
+}
+.bootstrap-select .dropdown-toggle.show {
+  padding: calc(0.5rem - 2px) calc(0.875rem - 2px);
+}
+.form-floating .bootstrap-select .dropdown-toggle {
+  padding: 0.7813rem 0.7813rem;
+}
+.form-floating .bootstrap-select .dropdown-toggle.show {
+  padding: calc(0.7813rem - 1px) calc(0.7813rem - 1px);
+}
 .bootstrap-select .dropdown-toggle:after {
   transform: rotate(45deg) translateY(-50%);
   position: absolute;
-  right: 17px;
-  top: 46%;
-  width: 0.5em;
-  height: 0.5em;
+  right: 13px;
+  top: 50%;
 }
 [dir=rtl] .bootstrap-select .dropdown-toggle:after {
-  left: 17px;
+  left: 13px;
   right: auto;
-}
-.bootstrap-select .dropdown-toggle.btn {
-  box-shadow: none !important;
 }
 .bootstrap-select .dropdown-menu .popover-header {
   display: flex;
@@ -438,18 +447,31 @@ select.selectpicker {
   padding-bottom: 0.125rem;
 }
 
-.bootstrap-select .dropdown-menu a:not([href]):not(.active):not(:active):not(.selected):hover {
-  color: #7367f0 !important;
+.form-floating:has(.bootstrap-select) label {
+  width: auto !important;
+  height: auto !important;
+  padding: 0 2px !important;
+  transform: scale(0.8) translateY(-0.7rem) translateX(-2px);
+  opacity: 1;
 }
-.bootstrap-select .btn[class*=btn-]:active,
-.bootstrap-select .btn[class*=btn-].active {
-  transform: none;
+html:not([dir=rtl]) .form-floating:has(.bootstrap-select) label {
+  margin-left: 0.7813rem;
+}
+[dir=rtl] .form-floating:has(.bootstrap-select) label {
+  margin-right: 0.7813rem;
+}
+.form-floating:has(.bootstrap-select) label:after {
+  content: "";
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  left: 0;
+  top: 0.6rem;
+  z-index: -1;
 }
 
 .bootstrap-select.dropup .dropdown-toggle:after {
   transform: rotate(-45deg) translateY(-50%);
-  height: 0.5em;
-  width: 0.5em;
 }
 
 .bootstrap-select.show-tick .dropdown-menu li a {
@@ -518,46 +540,38 @@ html[class] .bootstrap-select.form-select {
   background-color: #fff;
 }
 .light-style .bootstrap-select .dropdown-toggle {
-  border-radius: 0.375rem;
-  border: 1px solid #dbdade;
+  border-radius: 0.5rem;
+  border: 1px solid #d8d8dd;
 }
 .light-style .bootstrap-select .dropdown-toggle:not(.show):hover {
-  border-color: #dbdade;
-}
-.light-style .bootstrap-select .dropdown-menu {
-  box-shadow: 0 0.25rem 1rem rgba(165, 163, 174, 0.45);
-}
-.light-style .bootstrap-select .dropdown-menu[data-popper-placement=top-start], .light-style .bootstrap-select .dropdown-menu[data-popper-placement=top-end] {
-  box-shadow: 0 -0.2rem 1.25rem rgba(165, 163, 174, 0.4) !important;
+  border-color: #d8d8dd;
 }
 .light-style .bootstrap-select .dropdown-menu .notify {
   background: #fff;
   border: 1px solid var(--bs-border-color-translucent);
 }
 .light-style .bootstrap-select .dropdown-menu .popover-header button {
-  color: #6f6b7d;
+  color: #828393;
 }
 
 .dark-style .bootstrap-select {
-  background-color: #2f3349;
+  background-color: #30334e;
 }
 .dark-style .bootstrap-select .dropdown-toggle {
-  border: 1px solid #434968;
-  border-radius: 0.375rem;
+  color: #d2d2e8;
+  border: 1px solid #4f5269;
+  border-radius: 0.5rem;
+}
+.dark-style .bootstrap-select .dropdown-toggle:hover {
+  color: #d2d2e8;
 }
 .dark-style .bootstrap-select .dropdown-toggle:not(.show):hover {
-  border-color: #434968;
-}
-.dark-style .bootstrap-select .dropdown-menu {
-  box-shadow: 0 0.25rem 1rem rgba(15, 20, 34, 0.55);
-}
-.dark-style .bootstrap-select .dropdown-menu[data-popper-placement=top-start], .dark-style .bootstrap-select .dropdown-menu[data-popper-placement=top-end] {
-  box-shadow: 0 -0.2rem 1.25rem rgba(15, 20, 34, 0.55) !important;
+  border-color: #4f5269;
 }
 .dark-style .bootstrap-select .dropdown-menu .notify {
-  background: #2f3349;
+  background: #30334e;
   border: 1px solid var(--bs-border-color-translucent);
 }
 .dark-style .bootstrap-select .dropdown-menu .popover-header button {
-  color: #b6bee3;
+  color: #a0a1b8;
 }

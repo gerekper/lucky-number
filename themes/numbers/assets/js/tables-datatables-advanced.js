@@ -247,7 +247,11 @@ $(function () {
               return data;
             }
             return (
-              '<span class="badge ' + $status[$status_number].class + '">' + $status[$status_number].title + '</span>'
+              '<span class="badge rounded-pill ' +
+              $status[$status_number].class +
+              '">' +
+              $status[$status_number].title +
+              '</span>'
             );
           }
         }
@@ -289,11 +293,4 @@ $(function () {
       }
     });
   }
-
-  // Filter form control to default size
-  // ? setTimeout used for multilingual table initialization
-  setTimeout(() => {
-    $('.dataTables_filter .form-control').removeClass('form-control-sm');
-    $('.dataTables_length .form-select').removeClass('form-select-sm');
-  }, 200);
 });

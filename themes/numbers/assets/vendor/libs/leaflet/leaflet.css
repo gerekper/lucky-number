@@ -767,5 +767,5 @@ svg.leaflet-image-layer.leaflet-interactive path {
 }
 
 .leaflet-popup .leaflet-popup-content-wrapper {
-  border-radius: 0.375rem;
+  border-radius: 0.5rem;
 }

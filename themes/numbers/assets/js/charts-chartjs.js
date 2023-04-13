@@ -9,7 +9,7 @@
     yellowColor = '#ffe800',
     cyanColor = '#28dac6',
     orangeColor = '#FF8132',
-    orangeLightColor = '#FDAC34',
+    orangeLightColor = '#ffcf5c',
     oceanBlueColor = '#299AFF',
     greyColor = '#4F5D70',
     greyLightColor = '#EDF1F4',
@@ -64,7 +64,7 @@
         datasets: [
           {
             data: [275, 90, 190, 205, 125, 85, 55, 87, 127, 150, 230, 280, 190],
-            backgroundColor: cyanColor,
+            backgroundColor: orangeLightColor,
             borderColor: 'transparent',
             maxBarThickness: 15,
             borderRadius: {
@@ -134,7 +134,7 @@
         datasets: [
           {
             data: [710, 350, 470, 580, 230, 460, 120],
-            backgroundColor: config.colors.info,
+            backgroundColor: cyanColor,
             borderColor: 'transparent',
             maxBarThickness: 15
           }
@@ -207,21 +207,6 @@
           {
             data: [80, 150, 180, 270, 210, 160, 160, 202, 265, 210, 270, 255, 290, 360, 375],
             label: 'Europe',
-            borderColor: config.colors.danger,
-            tension: 0.5,
-            pointStyle: 'circle',
-            backgroundColor: config.colors.danger,
-            fill: false,
-            pointRadius: 1,
-            pointHoverRadius: 5,
-            pointHoverBorderWidth: 5,
-            pointBorderColor: 'transparent',
-            pointHoverBorderColor: cardColor,
-            pointHoverBackgroundColor: config.colors.danger
-          },
-          {
-            data: [80, 125, 105, 130, 215, 195, 140, 160, 230, 300, 220, 170, 210, 200, 280],
-            label: 'Asia',
             borderColor: config.colors.primary,
             tension: 0.5,
             pointStyle: 'circle',
@@ -233,6 +218,21 @@
             pointBorderColor: 'transparent',
             pointHoverBorderColor: cardColor,
             pointHoverBackgroundColor: config.colors.primary
+          },
+          {
+            data: [80, 125, 105, 130, 215, 195, 140, 160, 230, 300, 220, 170, 210, 200, 280],
+            label: 'Asia',
+            borderColor: config.colors.warning,
+            tension: 0.5,
+            pointStyle: 'circle',
+            backgroundColor: config.colors.warning,
+            fill: false,
+            pointRadius: 1,
+            pointHoverRadius: 5,
+            pointHoverBorderWidth: 5,
+            pointBorderColor: 'transparent',
+            pointHoverBorderColor: cardColor,
+            pointHoverBackgroundColor: config.colors.warning
           },
           {
             data: [80, 99, 82, 90, 115, 115, 74, 75, 130, 155, 125, 90, 140, 130, 180],
@@ -297,6 +297,9 @@
             align: 'start',
             rtl: isRtl,
             labels: {
+              font: {
+                family: 'Inter'
+              },
               usePointStyle: true,
               padding: 35,
               boxWidth: 6,
@@ -376,7 +379,10 @@
             position: 'top',
             labels: {
               padding: 25,
-              color: legendColor
+              color: legendColor,
+              font: {
+                family: 'Inter'
+              }
             }
           },
           tooltip: {
@@ -446,7 +452,10 @@
               padding: 25,
               boxWidth: 8,
               boxHeight: 8,
-              color: legendColor
+              color: legendColor,
+              font: {
+                family: 'Inter'
+              }
             }
           }
         }
@@ -748,7 +757,10 @@
               padding: 35,
               boxWidth: 6,
               boxHeight: 6,
-              color: legendColor
+              color: legendColor,
+              font: {
+                family: 'Inter'
+              }
             }
           },
           tooltip: {
@@ -1073,7 +1085,10 @@
               padding: 25,
               boxWidth: 6,
               boxHeight: 6,
-              color: legendColor
+              color: legendColor,
+              font: {
+                family: 'Inter'
+              }
             }
           },
           tooltip: {

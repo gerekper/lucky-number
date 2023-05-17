@@ -10,15 +10,15 @@
         "laravel/framework": "^6.0",
         "october/all": "^2.0",
         "martin/materialize-parallax-theme": "^1.0",
-        "rainlab/builder-plugin": "^1.2",
         "rainlab/pages-plugin": "^1.5",
-        "rainlab/user-plugin": "^2.0",
         "indikator/backend-plugin": "^1.6",
-        "rainlab/vanilla-theme": "^1.0",
         "rainlab/blog-plugin": "^1.7",
         "rainlab/forum-plugin": "^1.2",
         "pkurg/spacebootstrap5-theme": "^2.0",
-        "kenshin/kenshinschool-theme": "^1.0"
+        "kenshin/kenshinschool-theme": "^1.0",
+        "rainlab/builder-plugin": "^2.0",
+        "rainlab/user-plugin": "^2.0",
+        "rainlab/vanilla-theme": "^1.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^8.0|^9.0"

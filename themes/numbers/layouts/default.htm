@@ -10,7 +10,7 @@ security = "all"
     class="light-style layout-navbar-fixed layout-menu-fixed"
     data-theme="theme-default"
     data-assets-path="../assets/"
-    data-template="vertical-menu-template"
+    data-template="vertical-menu-template-no-customizer"
 >
   <head>
     <meta charset="utf-8" />
@@ -60,7 +60,20 @@ security = "all"
 
   <body>
     <!-- Layout wrapper -->
+    <div class="layout-wrapper layout-content-navbar">
+        <div class="layout-container">
+            <!-- Menu -->
+            {% partial 'navigation' %}
+            <!-- / Menu -->
+            <!-- Layout container -->
 
+             <!-- / Layout page -->
+        </div>
+      <!-- Overlay -->
+      <div class="layout-overlay layout-menu-toggle"></div>
+      <!-- Drag Target Area To SlideIn Menu On Small Screens -->
+      <div class="drag-target"></div>
+    </div>
     <!-- / Layout wrapper -->
 
   <!-- Core JS -->

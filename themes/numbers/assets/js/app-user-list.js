@@ -72,8 +72,7 @@ $(function () {
           },
           checkboxes: {
             selectAllRender: '<input type="checkbox" class="form-check-input">'
-          },
-          responsivePriority: 4
+          }
         },
         {
           // User full name and email
